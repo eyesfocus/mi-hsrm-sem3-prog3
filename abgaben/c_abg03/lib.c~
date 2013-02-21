@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <strings.h>
+
+int my_strcasecmp(const char *s1, const char *s2){
+  int dist = ('a'-'A');
+
+  putchar('c');
+  
+  while(*s1 == *s2 || (*s1+dist) == *s2 || (*s1-dist) == *s2){
+    if(*s1 == '\0'){
+      return 0;
+    } 
+    s1++;
+    s2++;
+  }
+
+  return (*s1-*s2);
+
+
+  /*while(*s1 != '\0' && *s2 != '\0'){
+    if(*s1 != *s2){
+      if(65 <= *s1 && *s1 <= 80){
+	if((*s1+32) == *s2){
+	  s1++;
+	  s2++;
+	}
+      } else if (97 <= *s1 && *s1 <= 123){ 
+	if((*s1-32) == *s2){
+	  s1++;
+	  s2++;
+	}
+      } else {
+	return (*s1-*s2);
+      }
+    } else {
+      s1++;
+      s2++;
+    }
+  }
+
+  return 0;*/
+
+
+}
+
+
+const char *my_index(const char *s, int c){
+  while(*s){
+    if (*s == c){
+      return s;
+    }
+    ++s;
+  }
+  return 0; 
+}
+
+
+int main(void){
+  /*WAS WENN z.B 'u' mitgegeben wird, das nicht enthalten ist?*/
+  /* printf("Index: 'Hallo', 'a': \n");
+  printf("Bib: %d, %c\n", *index("Hallo", 'H'), 108);
+  printf("meins: %d, %c\n", *my_index("Hallo", 'H'), 108);
+
+
+  printf("strcmp: Hallo hallo\n");*/
+
+  printf("Bib: %d\n", strcasecmp("hallo", "hllo"));
+  printf("meins: %d\n", my_strcasecmp("hallo", "hllo"));
+  printf("Bib: %d\n", strcasecmp("hallo", "hello"));
+  /*printf("meins: %d\n", my_strcasecmp("hallo", "hello"));*/
+
+
+  /*hallo, hello*/
+
+
+
+  return 0;
+}
+

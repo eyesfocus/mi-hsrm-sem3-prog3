@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+
+int split (char *str, char *delim);
+
+
+int main(int argc, char *argv[]){
+  char *splitter = argv[1];
+  int i;
+  if (argc > 2){
+    for(i = 3; i< argc; i++){
+      split(splitter, argv[i]);
+
+    }
+
+
+  }
+
+}

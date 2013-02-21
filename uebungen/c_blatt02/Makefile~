@@ -1,0 +1,22 @@
+CC=gcc
+DD=-g -ansi -Wall
+
+
+all: zeichne soundex
+
+zeichne: zeichne.o
+	$(CC) $(DD) zeichne.o -o zeichne
+
+zeichne.o: zeichne.c
+	$(CC) -c $(DD) zeichne.c
+
+soundex: soundex.o
+	$(CC) $(DD) soundex.o -o soundex
+
+soundex.o: soundex.c
+	$(CC) -c $(DD) soundex.c
+
+runzeichne: zeichne
+
+r_sound: soundex
+	./soundex soundex soundeggs flurbel

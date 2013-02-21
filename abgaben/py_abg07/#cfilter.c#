@@ -1,0 +1,67 @@
+int* c_filter(int* pgm, int b, int h, int maxx) {
+  int posaktpixaktpx = 0;
+  int summe1 = 0;
+  int summe2 = 0;
+  int curpos = 0;
+  int s = 0;
+  int *temp = malloc(sizeof(int)*height*width);
+  
+  pos = 0;
+  while(pos < (width*height)) {
+    suma = 0;
+    sumb = 0;
+    /* links oben */
+    if (pos -1 - width >= 0 && pos % width != 0) {
+      curpos = pos-width-1;
+      suma += (temppic[curpos]) * 1;
+      sumb += (temppic[curpos]) * 1;
+    }
+    /* oben drueber */
+    if (pos - width >= 0) {
+      curpos = pos-width;
+      sumb += (temppic[curpos]) * 2;
+    }
+    /* oben rechts */
+    if (pos - width + 1 >= 0 && (pos+1) % width != 0) {
+      curpos = (pos-(width+1));
+      suma += (temppic[curpos]) * (-1);
+      sumb += (temppic[curpos]) * 1;
+    }
+    /* links */
+    if (pos % width != 0) {
+      curpos = pos - 1;
+      suma += (temppic[curpos]) * (2);
+    }
+    /* rechts */
+    if ((pos+1) % width !=0) {
+      curpos = pos + 1;
+      suma += (temppic[curpos]) * (-2);
+    }
+    /* unten links */
+    /*if ((pos + width) < (width * height)  >= 0 && pos % width != 0) {*/
+    if (pos % width !=0 && ((pos + width) < (width * height))) {
+      curpos = pos + width-1;
+      suma += (temppic[curpos]) * 1;
+      sumb += (temppic[curpos]) * (-1);
+    }
+    /* unten */
+    if (pos + width < width * height) {
+      curpos = pos + width;
+      sumb += (temppic[curpos]) * (-2);
+    }
+    /* unten rechts */
+    /*if (pos + width < width * height && (pos + 1) % width != 0) {*/
+    if((pos+1) % width != 0 && ((pos + width) < (width * height))) {
+      curpos = pos + width + 1;
+      suma += (temppic[curpos]) * (-1);
+      sumb += (temppic[curpos]) * (-1);
+    }
+    s = (myAbs(suma) + myAbs(sumb));
+    if (s > maxVal)
+      s = 255;
+    pgm[pos] = s;
+    pos+=1;
+  }
+  free(temppic);
+  return pgm;
+}
