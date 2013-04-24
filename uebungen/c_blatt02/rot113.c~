@@ -1,6 +1,0 @@
-#include <stdio.h>
-
-int main(void){
-  set_rotate(13);
-  rotate('A');
-}
